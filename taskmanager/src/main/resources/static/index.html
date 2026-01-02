@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Task Manager</h1>
+    <p class="subtitle">Organize your daily tasks efficiently</p>
+
+    <!-- Task Form -->
+    <div class="card">
+        <input type="hidden" id="taskId">
+
+        <input type="text" id="title" placeholder="Task title">
+        <textarea id="description" placeholder="Task description"></textarea>
+
+        <div class="form-actions">
+            <button id="addBtn" onclick="addTask()">Add Task</button>
+            <button id="updateBtn" onclick="updateTask()" class="secondary" style="display:none;">
+                Update
+            </button>
+            <button id="cancelBtn" onclick="resetForm()" class="ghost" style="display:none;">
+                Cancel
+            </button>
+        </div>
+    </div>
+
+    <!-- Task List -->
+    <div id="taskList" class="task-list"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
