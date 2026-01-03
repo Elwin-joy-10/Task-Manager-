@@ -8,7 +8,10 @@ COPY taskmanager/mvnw taskmanager/mvnw.cmd ./
 COPY taskmanager/.mvn .mvn
 COPY taskmanager/pom.xml ./
 
-# Download dependencies (cache layer)
+# ✅ Fix permissions & line endings
+RUN chmod +x mvnw
+
+# Download dependencies
 RUN ./mvnw -B dependency:go-offline
 
 # Copy source code
@@ -23,7 +26,6 @@ FROM eclipse-temurin:21-jdk
 
 WORKDIR /app
 
-# Copy the built JAR from build stage
 COPY --from=build /build/target/*.jar app.jar
 
 EXPOSE 8080
